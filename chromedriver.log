@@ -88,3 +88,126 @@
 [1764271085.155][INFO]: ChromeDriver supports communication with Chrome via pipes. This is more reliable and more secure.
 [1764271085.155][INFO]: Use the --remote-debugging-pipe Chrome switch instead of the default --remote-debugging-port to enable this communication mode.
 [1764271085.158][INFO]: Launching chrome: "C:\Program Files\Google\Chrome\Application\chrome.exe" --allow-pre-commit-input --disable-background-networking --disable-backgrounding-occluded-windows --disable-client-side-phishing-detection --disable-default-apps --disable-features=IgnoreDuplicateNavs,Prewarm --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-automation --enable-logging --log-level=0 --no-first-run --no-service-autorun --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir="C:\Users\ritv4\AppData\Local\Temp\scoped_dir22792_1876011489" data:,
+[1764271085.913][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[1764271085.948][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE InitSession {
+   "capabilities": {
+      "acceptInsecureCerts": false,
+      "browserName": "chrome",
+      "browserVersion": "142.0.7444.176",
+      "chrome": {
+         "chromedriverVersion": "142.0.7444.175 (302067f14a4ea3f42001580e6101fa25ed343445-refs/branch-heads/7444@{#2749})",
+         "userDataDir": "C:\\Users\\ritv4\\AppData\\Local\\Temp\\scoped_dir22792_1876011489"
+      },
+      "fedcm:accounts": true,
+      "goog:chromeOptions": {
+         "debuggerAddress": "localhost:51044"
+      },
+      "goog:processID": 15144,
+      "networkConnectionEnabled": false,
+      "pageLoadStrategy": "normal",
+      "platformName": "windows",
+      "proxy": {
+      },
+      "setWindowRect": true,
+      "strictFileInteractability": false,
+      "timeouts": {
+         "implicit": 0,
+         "pageLoad": 300000,
+         "script": 30000
+      },
+      "unhandledPromptBehavior": "dismiss and notify",
+      "webauthn:extension:credBlob": true,
+      "webauthn:extension:largeBlob": true,
+      "webauthn:extension:minPinLength": true,
+      "webauthn:extension:prf": true,
+      "~~~": "..."
+   },
+   "sessionId": "7ace065b21b0f5346d755dad4bc8116b"
+}
+[1764271086.307][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND MaximizeWindow {
+}
+[1764271086.307][INFO]: Waiting for pending navigations...
+[1764271086.309][INFO]: Done waiting for pending navigations. Status: ok
+[1764271086.332][INFO]: Waiting for pending navigations...
+[1764271086.333][INFO]: Done waiting for pending navigations. Status: ok
+[1764271086.334][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE MaximizeWindow {
+   "height": 832,
+   "width": 1552,
+   "x": -8,
+   "y": -8
+}
+[1764271086.344][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND SetTimeouts {
+   "implicit": 30000
+}
+[1764271086.344][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE SetTimeouts
+[1764271086.354][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND SetTimeouts {
+   "implicit": 3000
+}
+[1764271086.355][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE SetTimeouts
+[1764271086.364][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND Navigate {
+   "url": "https://www.google.com"
+}
+[1764271086.364][INFO]: Waiting for pending navigations...
+[1764271086.365][INFO]: Done waiting for pending navigations. Status: ok
+[1764271086.639][INFO]: Waiting for pending navigations...
+[1764271087.534][INFO]: Done waiting for pending navigations. Status: ok
+[1764271087.534][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE Navigate
+[1764271087.542][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND Navigate {
+   "url": "https://leetcode.com/"
+}
+[1764271087.542][INFO]: Waiting for pending navigations...
+[1764271087.543][INFO]: Done waiting for pending navigations. Status: ok
+[1764271088.148][INFO]: Waiting for pending navigations...
+[1764271093.211][INFO]: Done waiting for pending navigations. Status: ok
+[1764271093.211][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE Navigate
+[1764271093.216][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND GetUrl {
+}
+[1764271093.216][INFO]: Waiting for pending navigations...
+[1764271093.217][INFO]: Done waiting for pending navigations. Status: ok
+[1764271093.222][INFO]: Waiting for pending navigations...
+[1764271093.223][INFO]: Done waiting for pending navigations. Status: ok
+[1764271093.223][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE GetUrl "https://leetcode.com/"
+[1764271093.230][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND Navigate {
+   "url": "https://leetcode.com/"
+}
+[1764271093.230][INFO]: Waiting for pending navigations...
+[1764271093.231][INFO]: Done waiting for pending navigations. Status: ok
+[1764271093.709][INFO]: Waiting for pending navigations...
+[1764271094.440][INFO]: Done waiting for pending navigations. Status: ok
+[1764271094.440][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE Navigate
+[1764271094.455][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND FindElement {
+   "using": "xpath",
+   "value": "//a[@href='/problemset/']"
+}
+[1764271094.455][INFO]: Waiting for pending navigations...
+[1764271094.458][INFO]: Done waiting for pending navigations. Status: ok
+[1764271094.480][INFO]: Waiting for pending navigations...
+[1764271094.481][INFO]: Done waiting for pending navigations. Status: ok
+[1764271094.481][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "f.BB470ACF4983A8372C9E5A050593C879.d.63BC2503F5765DF6D21EB8566ECD5CB2.e.35"
+}
+[1764271094.493][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND ClickElement {
+   "id": "f.BB470ACF4983A8372C9E5A050593C879.d.63BC2503F5765DF6D21EB8566ECD5CB2.e.35"
+}
+[1764271094.493][INFO]: Waiting for pending navigations...
+[1764271094.494][INFO]: Done waiting for pending navigations. Status: ok
+[1764271094.632][INFO]: Waiting for pending navigations...
+[1764271096.093][INFO]: Done waiting for pending navigations. Status: ok
+[1764271096.093][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE ClickElement
+[1764271096.098][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND GetUrl {
+}
+[1764271096.099][INFO]: Waiting for pending navigations...
+[1764271096.121][INFO]: Done waiting for pending navigations. Status: ok
+[1764271096.175][INFO]: Waiting for pending navigations...
+[1764271096.179][INFO]: Done waiting for pending navigations. Status: ok
+[1764271096.179][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE GetUrl "https://leetcode.com/problemset/"
+[1764271096.186][INFO]: [7ace065b21b0f5346d755dad4bc8116b] COMMAND FindElement {
+   "using": "xpath",
+   "value": "//div[@class='inline-block min-w-full']"
+}
+[1764271096.186][INFO]: Waiting for pending navigations...
+[1764271096.187][INFO]: Done waiting for pending navigations. Status: ok
+[1764271099.237][INFO]: Waiting for pending navigations...
+[1764271099.238][INFO]: Done waiting for pending navigations. Status: ok
+[1764271099.238][INFO]: [7ace065b21b0f5346d755dad4bc8116b] RESPONSE FindElement ERROR no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='inline-block min-w-full']"}
+  (Session info: chrome=142.0.7444.176)
