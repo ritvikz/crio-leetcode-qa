@@ -1,6 +1,7 @@
 package demo;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,9 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.logging.Level;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -70,49 +74,76 @@ public class TestCases {
         System.out.println("end Test case: testCase01");
     }
     public static void testCase02() throws InterruptedException {
-        driver.get("https://leetcode.com/");
-        WebElement questionsLink = driver.findElement(By.xpath("//a[@href='/problemset/']"));
-        questionsLink.click();
-        String currentUrl = driver.getCurrentUrl();
-        if (currentUrl.contains("problemset")) {
-            System.out.println("Test Case 02: PASS - URL contains 'problemset'");
-        } else {
-            System.out.println("Test Case 02: FAIL - URL does not contain 'problemset'");
-        }
-        //WebElement ele = driver.findElement(By.xpath("//div[@class='inline-block min-w-full']"));
 
-        //scrollToElement(driver,ele);
-        Thread.sleep(5000);
-        // Retrieve details of the first 5 questions and print them
-       List<WebElement> questionElements = driver.findElements(
-        By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center")
-);
+    // 1️⃣ Navigate to homepage
+    driver.get("https://leetcode.com/");
 
-        System.out.println("First 5 Questions:");
-        for (int i = 1; i <= 5; i++) {
-            WebElement questionTitleElement = questionElements.get(i)
-        .findElement(By.cssSelector("div.ellipsis.line-clamp-1"));
-            String questionTitle = questionTitleElement.getText();
-            if(i==1){
-                if(questionTitle.contains("Two Sum")){
-                    System.out.println("Test Case 03: PASS - URL contains 'two-sum'");
+    // 2️⃣ Click the Problemset link
+    WebElement questionsLink = driver.findElement(By.xpath("//a[@href='/problemset/']"));
+    questionsLink.click();
 
-                    System.out.println("First question is Verified Successfully");
-                    //questionElements.get(i).click();
+    // 3️⃣ Verify URL
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.urlContains("problemset"));
 
-                }else{
-                    System.out.println("Failed to verify first question");
-                }
-                 //break;
-            }
-        System.out.println(questionTitle);
-        }
+    String currentUrl = driver.getCurrentUrl();
+    if (currentUrl.contains("problemset")) {
+        System.out.println("Test Case 02: PASS - URL contains 'problemset'");
+    } else {
+        System.out.println("Test Case 02: FAIL - URL does not contain 'problemset'");
     }
+
+    // 4️⃣ Wait until the list loads
+    wait.until(ExpectedConditions.visibilityOfElementLocated(
+        By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center")
+    ));
+
+    // 5️⃣ Get all question rows
+    List<WebElement> questionElements = driver.findElements(
+            By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center")
+    );
+
+    // 6️⃣ Extract first 5 question titles BEFORE clicking (avoids stale elements)
+    List<String> firstFiveTitles = new ArrayList<>();
+
+    for (int i = 1; i < 5; i++) {
+        WebElement titleElement = questionElements.get(i)
+                .findElement(By.cssSelector("div.ellipsis.line-clamp-1"));
+        firstFiveTitles.add(titleElement.getText());
+    }
+
+    // 7️⃣ Print all 5 questions
+    System.out.println("First 5 Questions:");
+    for (String title : firstFiveTitles) {
+        System.out.println(title);
+    }
+
+    // 8️⃣ Verify the first question = Two Sum
+    String firstTitle = firstFiveTitles.get(0);
+    if (firstTitle.contains("Two Sum")) {
+        System.out.println("First question is Verified Successfully");
+    } else {
+        System.out.println("Failed to verify first question");
+    }
+
+    // 9️⃣ Click the first question (fresh element lookup to avoid stale element)
+    driver.findElements(By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center"))
+            .get(1).click();
+
+    // 🔟 Verify URL contains "two-sum"
+    wait.until(ExpectedConditions.urlContains("two-sum"));
+    if (driver.getCurrentUrl().contains("two-sum")) {
+        System.out.println("Test Case 03: PASS - URL contains 'two-sum'");
+    } else {
+        System.out.println("Test Case 03: FAIL - URL does not contain 'two-sum'");
+    }
+}
+
 
     public static void testCase03(){
         String c_url = driver.getCurrentUrl();
         String url = "https://leetcode.com/problemset/";
-         if(!c_url.equals(url)){
+        /* if(!c_url.equals(url)){
             driver.get(url);
         }
         List<WebElement> q_urls = driver.findElements(By.xpath("//div[@role='rowgroup']/div/div[2]//descendant::a"));
@@ -124,7 +155,7 @@ public class TestCases {
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
                 
             }
-        }
+        } */
 //        driver.switchTo().frame(0);
 //        driver.findElement(By.xpath("//div[@class='modal-container']/span[text()='I don't want to subscribe!']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
@@ -156,4 +187,4 @@ public class TestCases {
 
     }
 
-}
+}//testt
