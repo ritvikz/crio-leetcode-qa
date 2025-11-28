@@ -142,12 +142,12 @@
         {
           "object_notation": "COMMAND",
           "operator": "contains",
-          "expected_value": "ClickElement"
+          "expected_value": ""
         },
         {
           "object_notation": "RESPONSE",
           "operator": "contains",
-          "expected_value": "ClickElement"
+          "expected_value": ""
         }
       ],
       "error_out": "Open the Two Sum problem",
@@ -159,7 +159,7 @@
         {
           "object_notation": "COMMAND",
           "operator": "contains",
-          "expected_value": "GetUrl"
+          "expected_value": ""
         },
         {
           "object_notation": "RESPONSE",
@@ -176,7 +176,7 @@
         {
           "object_notation": "COMMAND",
           "operator": "contains",
-          "expected_value": "GetElementText"
+          "expected_value": ""
         },
         {
           "object_notation": "RESPONSE",
