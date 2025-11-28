@@ -112,7 +112,7 @@ public class TestCases {
     public static void testCase03(){
         String c_url = driver.getCurrentUrl();
         String url = "https://leetcode.com/problemset/";
-       /*  if(!c_url.equals(url)){
+         if(!c_url.equals(url)){
             driver.get(url);
         }
         List<WebElement> q_urls = driver.findElements(By.xpath("//div[@role='rowgroup']/div/div[2]//descendant::a"));
@@ -124,7 +124,7 @@ public class TestCases {
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
                 
             }
-        }*/
+        }
 //        driver.switchTo().frame(0);
 //        driver.findElement(By.xpath("//div[@class='modal-container']/span[text()='I don't want to subscribe!']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
