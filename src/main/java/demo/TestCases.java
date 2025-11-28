@@ -98,14 +98,14 @@ public class TestCases {
                     System.out.println("Test Case 03: PASS - URL contains 'two-sum'");
 
                     System.out.println("First question is Verified Successfully");
-                    questionElements.get(i).click();
+                    //questionElements.get(i).click();
 
                 }else{
                     System.out.println("Failed to verify first question");
                 }
-                 break;
+                 //break;
             }
-            System.out.println(questionTitle);
+        System.out.println(questionTitle);
         }
     }
 
@@ -148,6 +148,7 @@ public class TestCases {
 
             WebElement btn = driver.findElement(By.xpath("//a[normalize-space()='Register or Log in']"));
             if(btn.getText().equals("Register or Log in")){
+                 System.out.println("Test Case 04: PASS -'Register or Login' is displayed when you click on the submission tab.");
                 System.out.println("The message Register or Sign In is displayed when you click on the submissions tab.");
             }else{
                 System.out.println("Register or Sign In button Verfication Failed ...");
