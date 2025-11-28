@@ -79,15 +79,19 @@ public class TestCases {
         } else {
             System.out.println("Test Case 02: FAIL - URL does not contain 'problemset'");
         }
-        WebElement ele = driver.findElement(By.xpath("//div[@class='inline-block min-w-full']"));
+        //WebElement ele = driver.findElement(By.xpath("//div[@class='inline-block min-w-full']"));
 
-        scrollToElement(driver,ele);
+        //scrollToElement(driver,ele);
         Thread.sleep(5000);
         // Retrieve details of the first 5 questions and print them
-        List<WebElement> questionElements = driver.findElements(By.xpath("//div[@role='rowgroup']/div/div[2]"));
+       List<WebElement> questionElements = driver.findElements(
+        By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center")
+);
+
         System.out.println("First 5 Questions:");
         for (int i = 1; i <= 5; i++) {
-            WebElement questionTitleElement = questionElements.get(i).findElement(By.xpath(".//descendant::a"));
+            WebElement questionTitleElement = questionElements.get(i)
+        .findElement(By.cssSelector("div.ellipsis.line-clamp-1"));
             String questionTitle = questionTitleElement.getText();
             if(i==1){
                 if(questionTitle.contains("Two Sum")){
@@ -98,7 +102,8 @@ public class TestCases {
             }
             System.out.println(questionTitle);
         }
-    }//tesr
+    }
+
     public static void testCase03(){
         String c_url = driver.getCurrentUrl();
         String url = "https://leetcode.com/problemset/";
@@ -134,7 +139,7 @@ public class TestCases {
         driver.findElement(By.id("submissions_tab")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-            WebElement btn = driver.findElement(By.xpath("//a[text()='Register or Sign In']"));
+            WebElement btn = driver.findElement(By.xpath("//a[normalize-space()='Register or Log in']"));
             if(btn.getText().equals("Register or Sign In")){
                 System.out.println("The message Register or Sign In is displayed when you click on the submissions tab.");
             }else{
