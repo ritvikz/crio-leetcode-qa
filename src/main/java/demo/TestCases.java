@@ -73,71 +73,54 @@ public class TestCases {
         }
         System.out.println("end Test case: testCase01");
     }
-    public static void testCase02() throws InterruptedException {
+    public static void testCase02() {
 
-    // 1️⃣ Navigate to homepage
     driver.get("https://leetcode.com/");
 
-    // 2️⃣ Click the Problemset link
     WebElement questionsLink = driver.findElement(By.xpath("//a[@href='/problemset/']"));
     questionsLink.click();
 
-    // 3️⃣ Verify URL
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     wait.until(ExpectedConditions.urlContains("problemset"));
 
-    String currentUrl = driver.getCurrentUrl();
-    if (currentUrl.contains("problemset")) {
-        System.out.println("Test Case 02: PASS - URL contains 'problemset'");
-    } else {
-        System.out.println("Test Case 02: FAIL - URL does not contain 'problemset'");
-    }
-
-    // 4️⃣ Wait until the list loads
-    wait.until(ExpectedConditions.visibilityOfElementLocated(
-        By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center")
-    ));
-
-    // 5️⃣ Get all question rows
     List<WebElement> questionElements = driver.findElements(
             By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center")
     );
 
-    // 6️⃣ Extract first 5 question titles BEFORE clicking (avoids stale elements)
-    List<String> firstFiveTitles = new ArrayList<>();
+    System.out.println("First 5 Questions:");
 
-    for (int i = 1; i < 5; i++) {
+    // Store titles
+    List<String> titles = new ArrayList<>();
+
+    // ⭐ Skip index 0 — start from index 1 to 5
+    for (int i = 1; i <= 5; i++) {
         WebElement titleElement = questionElements.get(i)
                 .findElement(By.cssSelector("div.ellipsis.line-clamp-1"));
-        firstFiveTitles.add(titleElement.getText());
+
+        String title = titleElement.getText();
+        titles.add(title);
+        System.out.println(title);  // <-- Prints all 5 (including Longest Palindromic Substring)
     }
 
-    // 7️⃣ Print all 5 questions
-    System.out.println("First 5 Questions:");
-    for (String title : firstFiveTitles) {
-        System.out.println(title);
-    }
-
-    // 8️⃣ Verify the first question = Two Sum
-    String firstTitle = firstFiveTitles.get(0);
-    if (firstTitle.contains("Two Sum")) {
-        System.out.println("First question is Verified Successfully");
+    // ⭐ Verify first problem (Two Sum) at index 1
+    if (titles.get(0).contains("Two Sum")) {
+        System.out.println("First question Verified Successfully");
     } else {
-        System.out.println("Failed to verify first question");
+        System.out.println("First question verification FAILED");
     }
 
-    // 9️⃣ Click the first question (fresh element lookup to avoid stale element)
-    driver.findElements(By.cssSelector("div.relative.flex.h-full.w-full.cursor-pointer.items-center"))
-            .get(1).click();
+    // ⭐ Click Two Sum (index 1)
+    questionElements.get(1).click();
 
-    // 🔟 Verify URL contains "two-sum"
     wait.until(ExpectedConditions.urlContains("two-sum"));
+
     if (driver.getCurrentUrl().contains("two-sum")) {
         System.out.println("Test Case 03: PASS - URL contains 'two-sum'");
     } else {
         System.out.println("Test Case 03: FAIL - URL does not contain 'two-sum'");
     }
 }
+
 
 
     public static void testCase03(){
@@ -167,24 +150,38 @@ public class TestCases {
 
     }
 
-    public static void testCase04() throws InterruptedException{
-        String c_url = driver.getCurrentUrl();
-        String url = "https://leetcode.com/problems/two-sum/description/";
-        if(!c_url.equals(url)){
-            driver.get(url);
-        }
-        driver.findElement(By.id("submissions_tab")).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        Thread.sleep(2000);
+    public static void testCase04() throws InterruptedException {
 
-            WebElement btn = driver.findElement(By.xpath("//a[normalize-space()='Register or Log in']"));
-            if(btn.getText().equals("Register or Log in")){
-                 System.out.println("Test Case 04: PASS -'Register or Login' is displayed when you click on the submission tab.");
-                System.out.println("The message Register or Sign In is displayed when you click on the submissions tab.");
-            }else{
-                System.out.println("Register or Sign In button Verfication Failed ...");
-            }
+    String expectedUrl = "https://leetcode.com/problems/two-sum/";
+    String currentUrl = driver.getCurrentUrl();
 
+    // Ensure correct URL
+    if (!currentUrl.contains("two-sum")) {
+        driver.get(expectedUrl);
     }
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    // Click Submissions tab
+    WebElement submissionsTab = wait.until(
+        ExpectedConditions.elementToBeClickable(By.id("submissions_tab"))
+    );
+    submissionsTab.click();
+
+    // Wait for the login/register message to appear
+    WebElement btn = wait.until(
+        ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Register') or contains(text(),'Sign In') or contains(text(),'Login')]"))
+    );
+
+    String text = btn.getText();
+
+    // Assessment expects "Register or Login"
+    if (text.contains("Register or Log in") ) {
+        System.out.println("Test Case 04: PASS - 'Register or Login' is displayed when you click on the submission tab.");
+    } else {
+        System.out.println("Test Case 04: FAIL - Expected message not found. Found: " + text);
+    }
+}
+
 
 }//testt

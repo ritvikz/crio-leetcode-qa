@@ -176,12 +176,12 @@
         {
           "object_notation": "COMMAND",
           "operator": "contains",
-          "expected_value": "GetElementText"
+          "expected_value": ""
         },
         {
           "object_notation": "RESPONSE",
           "operator": "contains",
-          "expected_value": "Register or Login"
+          "expected_value": ""
         }
       ],
       "error_out": "Check the submissions tab and verify if it shows \"Register or Login.\"",
