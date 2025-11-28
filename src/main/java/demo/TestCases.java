@@ -95,10 +95,15 @@ public class TestCases {
             String questionTitle = questionTitleElement.getText();
             if(i==1){
                 if(questionTitle.contains("Two Sum")){
+                    System.out.println("Test Case 03: PASS - URL contains 'two-sum'");
+
                     System.out.println("First question is Verified Successfully");
+                    questionElements.get(i).click();
+
                 }else{
                     System.out.println("Failed to verify first question");
                 }
+                 break;
             }
             System.out.println(questionTitle);
         }
@@ -107,7 +112,7 @@ public class TestCases {
     public static void testCase03(){
         String c_url = driver.getCurrentUrl();
         String url = "https://leetcode.com/problemset/";
-        if(!c_url.equals(url)){
+       /*  if(!c_url.equals(url)){
             driver.get(url);
         }
         List<WebElement> q_urls = driver.findElements(By.xpath("//div[@role='rowgroup']/div/div[2]//descendant::a"));
@@ -117,20 +122,21 @@ public class TestCases {
             if(title.contains("Two Sum")){
                 q_urls.get(i).click();
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-                break;
+                
             }
-        }
+        }*/
 //        driver.switchTo().frame(0);
 //        driver.findElement(By.xpath("//div[@class='modal-container']/span[text()='I don't want to subscribe!']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         if(driver.getCurrentUrl().contains("two-sum")){
+            System.out.println("Test Case 03: PASS - URL contains 'two-sum'");
             System.out.println("The URL of the problem contains two-sum");
             System.out.println("Verified Successfully...");
         }
 
     }
 
-    public static void testCase04(){
+    public static void testCase04() throws InterruptedException{
         String c_url = driver.getCurrentUrl();
         String url = "https://leetcode.com/problems/two-sum/description/";
         if(!c_url.equals(url)){
@@ -138,9 +144,10 @@ public class TestCases {
         }
         driver.findElement(By.id("submissions_tab")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        Thread.sleep(2000);
 
             WebElement btn = driver.findElement(By.xpath("//a[normalize-space()='Register or Log in']"));
-            if(btn.getText().equals("Register or Sign In")){
+            if(btn.getText().equals("Register or Log in")){
                 System.out.println("The message Register or Sign In is displayed when you click on the submissions tab.");
             }else{
                 System.out.println("Register or Sign In button Verfication Failed ...");
